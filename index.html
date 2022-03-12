@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .particle {
+            stroke: white;
+            position: absolute;
+            animation: fade-particle 1s forwards;
+        }
+
+        @keyframes fade-particle {
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hidden">
+        <svg width="20" height="20" class="particle">
+            <circle cx="50%" cy="50%" r="10"/>
+        </svg>
+    </div>
+    <script>
+    
+    const particle = document.querySelector('.hidden .particle')
+
+document.onclick = e => {
+    let clone = particle.cloneNode(true)
+    let circle = clone.querySelector('circle')
+    let size = 100
+
+
+    clone.style.width = size
+    clone.style.height = size
+    circle.style.r = size / 2
+
+    console.log(circle)
+
+
+    clone.style.left = e.clientX - (size / 2) + (Math.random() * 50)
+    clone.style.top = e.clientY - (size / 2) + (Math.random() * 50)
+    document.body.appendChild(clone)
+}
+
+document.onmousemove = e => {
+    let clone = particle.cloneNode(true)
+    let circle = clone.querySelector('circle')
+    let size = 10
+
+
+    clone.style.width = size
+    clone.style.height = size
+    circle.style.r = size / 2
+
+    console.log(circle)
+
+
+    clone.style.left = e.clientX - (size / 2) + (Math.random() * 5)
+    clone.style.top = e.clientY - (size / 2) + (Math.random() * 5)
+    document.body.appendChild(clone)
+}
+    
+    
+    </script>
+
+</body>
+</html>
+
